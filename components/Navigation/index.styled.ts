@@ -6,10 +6,10 @@ import { responsive } from '@/utils/responsive';
 export const MainNavigationContainer = styled.div`
 	grid-column: full-start / full-end;
 	background-color: rgb(255, 255, 255);
+	top: 0;
 	position: absolute;
 	left: 0;
 	width: 100vw;
-	top: 0;
 	display: grid;
 	grid-template-columns: 1fr;
 	z-index: 20;
