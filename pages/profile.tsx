@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { withProtected } from 'routes/withProtectedRoute';
 
 import { CustomPageHeader } from '@/components/Elements/Headings';
 import { MainLayout } from '@/components/Layout';
+import { withProtected } from '@/routes/withProtectedRoute';
 import { Context } from '@/store/appContext';
 
 function ProfilePage() {

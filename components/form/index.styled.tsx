@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { responsive } from '@/utils/responsive';
-
 export const FormControlContainer = styled.div`
 	width: 100%;
 	background-color: white;

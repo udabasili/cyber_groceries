@@ -1,9 +1,10 @@
-import { confirmCurrentUser } from 'middleware/setCurrentUser';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { AuthUser } from '@/features/auth';
 import dbConnect from '@/utils/dbConnect';
 import errorController from '@/utils/errorController';
+
+import { confirmCurrentUser } from 'middleware/setCurrentUser';
 
 interface CustomNextApiRequest extends NextApiRequest {
 	currentUser: AuthUser;

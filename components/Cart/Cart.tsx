@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import { toast } from 'react-toastify';
 
 import { Context } from '@/store/appContext';
 

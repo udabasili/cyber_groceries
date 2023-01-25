@@ -1,10 +1,7 @@
 import { getCookie, setCookie } from 'cookies-next';
-import { JwtPayload, verify } from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { secretKey } from '@/config/index';
 import { AuthUser } from '@/features/auth';
-import User from '@/models/User';
 import dbConnect from '@/utils/dbConnect';
 import errorController from '@/utils/errorController';
 import { reIssueAccessToken } from '@/utils/token';

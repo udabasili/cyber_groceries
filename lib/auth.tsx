@@ -26,7 +26,7 @@ async function handleUserResponse(data: IUserResponse) {
 export async function getCurrentUserFn() {
 	if (storage.get()) {
 		const response = await getUser();
-		const { jwt, user } = response.message;
+		const { user } = response.message;
 		return user;
 	}
 	return null;

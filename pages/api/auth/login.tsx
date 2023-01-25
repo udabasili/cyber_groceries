@@ -10,7 +10,7 @@ import errorController from '@/utils/errorController';
 import { generateToken } from '@/utils/token';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-	const client = await dbConnect();
+	await dbConnect();
 
 	const { method } = req;
 

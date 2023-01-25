@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsGlobe2 } from 'react-icons/bs';
 import { FaSearch, FaUserAlt } from 'react-icons/fa';

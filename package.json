@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "link:fix": "next lint --fix",
+    "lint:fix": "next lint --fix",
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "cypress:open": "cypress open"

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { AiFillHome, AiFillShop, AiFillPhone } from 'react-icons/ai';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { IoIosInformationCircleOutline } from 'react-icons/io';

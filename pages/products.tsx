@@ -2,7 +2,7 @@
 import { useReducer } from 'react';
 
 import { CustomPageHeader } from '@/components/Elements/Headings';
-import { ContentLayout, MainLayout } from '@/components/Layout';
+import { MainLayout } from '@/components/Layout';
 import { category } from '@/data/categories';
 import { ShopMain, Sort, Filter, PaginatedProducts, FilterProps } from '@/features/shop';
 

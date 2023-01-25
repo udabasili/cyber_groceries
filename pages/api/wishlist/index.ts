@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongodb';
 import { Error } from 'mongoose';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';

@@ -1,4 +1,4 @@
-import { ContentLayout, MainLayout } from '@/components/Layout';
+import { MainLayout } from '@/components/Layout';
 import { Categories, Header, HotOffers, SampleProducts, Subscribe } from '@/features/home';
 
 export default function Home() {

@@ -13,7 +13,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method !== 'POST') {
 		return res.status(405).json({ success: false, message: `Method '${req.method}' Not Allowed` });
 	}
-	const client = await dbConnect();
+	await dbConnect();
 
 	try {
 		const userInputDTO = req.body as RegisterDataDTO;

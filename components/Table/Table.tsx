@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import * as React from 'react';
 import { HiArchive } from 'react-icons/hi';
 
 type TableColumn<Entry> = {
 	title: string;
 	field: keyof Entry;
-	Cell?({ entry }: { entry: any }): React.ReactElement;
+	Cell?({ entry }: { entry: unknown }): React.ReactElement;
 };
 
 export type TableProps<Entry> = {
@@ -12,7 +13,7 @@ export type TableProps<Entry> = {
 	columns: TableColumn<Entry>[];
 };
 
-export const Table = <Entry extends { _id: string; buttons?: any }>({ data, columns }: TableProps<Entry>) => {
+export const Table = <Entry extends { _id: string; buttons?: unknown }>({ data, columns }: TableProps<Entry>) => {
 	if (!data?.length) {
 		return (
 			<div className="flex flex-col items-center justify-center text-gray-500 bg-white h-80">

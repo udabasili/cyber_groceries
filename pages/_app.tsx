@@ -1,13 +1,14 @@
-import AuthMiddleware from 'middleware/AuthMiddleware';
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 
 import colors from '@/constant/colors';
 import { header, paragraph } from '@/constant/font';
+import AuthMiddleware from '@/middleware/AuthMiddleware';
+import { AppContext } from '@/store/appContext';
+
 import '../styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { AppContext } from '@/store/appContext';
 
 const queryClient = new QueryClient({
 	defaultOptions: {

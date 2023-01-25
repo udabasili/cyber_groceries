@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
-import { CustomPageHeader } from '@/components/Elements/Headings';
 import { Spinner } from '@/components/Elements/Spinner';
-import { MainLayout, ContentLayout } from '@/components/Layout';
+import { MainLayout } from '@/components/Layout';
 import { CategoryProducts, CategoryTabs, useGetProductsByCategory } from '@/features/categories';
 
 export default function CategoryDetails() {

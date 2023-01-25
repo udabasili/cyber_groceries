@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect } from 'react';
 import { FieldValues, useForm, UseFormProps, UseFormReturn } from 'react-hook-form';
@@ -9,7 +11,7 @@ import { FormContainer } from './index.styled';
 type FormProps<FormValues extends FieldValues, FormSchema> = {
 	schema: FormSchema;
 	onSubmitFn: (values: FormValues) => void;
-	children: (methods: UseFormReturn<FormValues, any>) => React.ReactNode;
+	children: (methods: UseFormReturn<FormValues, unknown>) => React.ReactNode;
 	options?: UseFormProps<FormValues>;
 };
 

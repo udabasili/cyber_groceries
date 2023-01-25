@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
-import { withProtected } from 'routes/withProtectedRoute';
+import React from 'react';
 
 import { CustomPageHeader } from '@/components/Elements/Headings';
 import { MainLayout } from '@/components/Layout';
 import { WishlistTable } from '@/features/wishList';
-import { Context } from '@/store/appContext';
+import { withProtected } from '@/routes/withProtectedRoute';
 
 function WishList() {
-	const { currentUser } = useContext(Context);
-
 	return (
 		<MainLayout title="My Wish List">
 			<CustomPageHeader title="My Wish List" path="wishlist" link="wishlist" />

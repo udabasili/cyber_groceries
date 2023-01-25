@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
