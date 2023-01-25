@@ -19,8 +19,7 @@ import { useRemoveFromWisList } from '../api/removeFromWishList';
 import { IWishList } from '../types';
 
 export const WishlistTable = () => {
-	const { currentUser } = useContext(Context);
-	const { isLoading, wishList } = useGetWishListItems(currentUser._id);
+	const { isLoading, wishList } = useGetWishListItems();
 	const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 	const [selectedWishlist, setSelectedWishlist] = useState('');
 	const { addItemToCart } = useContext(Context);
