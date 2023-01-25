@@ -11,11 +11,10 @@ const getWishListFn = async () => {
 	return response.data;
 };
 
-export const useGetWishListItems = (userId: string) => {
+export const useGetWishListItems = () => {
 	const { isLoading, data: wishList } = useQuery({
 		queryFn: () => getWishListFn(),
 		queryKey: ['wish'],
-		enabled: !!userId,
 		select: (data) => data.message,
 		onError: (error: unknown) => {
 			const errorObject = error as AxiosError & Error;

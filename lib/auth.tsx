@@ -51,11 +51,12 @@ async function logoutFn() {
 export const useRegister = () => {
 	const queryClient = useQueryClient();
 	const { setCurrentUser } = useContext(Context);
+	const router = useRouter();
 
 	const { mutate: register, isLoading } = useMutation((data: RegisterDataDTO) => registerFn(data), {
 		onSuccess: (response) => {
-			setCurrentUser(response);
-			queryClient.invalidateQueries('user');
+			queryClient.invalidateQueries(['user']);
+			router.push('/');
 		},
 		onError: (error: unknown) => {
 			const errorObject = error as AxiosError & Error;

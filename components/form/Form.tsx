@@ -28,12 +28,5 @@ export const Form = <
 		mode: 'onChange',
 	});
 
-	useEffect(() => {
-		if (methods.formState.isSubmitSuccessful) {
-			methods.reset();
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [methods.formState.isSubmitSuccessful]);
-
 	return <FormContainer onSubmit={methods.handleSubmit(onSubmitFn)}>{children(methods)}</FormContainer>;
 };
