@@ -7,3 +7,4 @@ describe('Category', () => {
 		}).should('include', '/categories');
 	});
 });
+export {};

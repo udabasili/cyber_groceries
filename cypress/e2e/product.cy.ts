@@ -5,3 +5,5 @@ describe('Product Page', () => {
 		cy.url().should('include', '/products');
 	});
 });
+
+export {};

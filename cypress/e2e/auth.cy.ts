@@ -40,3 +40,4 @@ describe('Auth Form', () => {
 		});
 	});
 });
+export {};

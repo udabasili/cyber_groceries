@@ -27,3 +27,4 @@ describe('Home Page', () => {
 		});
 	});
 });
+export {};
