@@ -1,7 +1,7 @@
-import { confirmCurrentUser } from 'middleware/setCurrentUser';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { AuthUser } from '@/features/auth';
+import { confirmCurrentUser } from '@/middleware/setCurrentUser';
 import dbConnect from '@/utils/dbConnect';
 import errorController from '@/utils/errorController';
 
