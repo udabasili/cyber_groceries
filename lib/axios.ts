@@ -11,17 +11,14 @@ export const apiCall = axios.create({
 	withCredentials: true,
 });
 
-function apiRequest(config: AxiosRequestConfig) {
+apiCall.interceptors.request.use((config) => {
 	const token = storage.get();
-	if (token) {
+	if (token && config.headers) {
 		config.headers.authorization = `Bearer ${token}`;
 	}
 
-	config.headers.accept = 'application/json';
 	return config;
-}
-
-apiCall.interceptors.request.use(apiRequest);
+});
 
 apiCall.interceptors.response.use(
 	(response) => {
