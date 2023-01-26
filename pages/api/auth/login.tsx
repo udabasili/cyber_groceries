@@ -6,7 +6,7 @@ import { LoginCredentialsDTO } from '@/features/auth';
 import Token from '@/models/Token';
 import User from '@/models/User';
 import dbConnect from '@/utils/dbConnect';
-import errorController from '@/utils/errorController';
+import errorController, { CustomError, IError } from '@/utils/errorController';
 import { generateToken } from '@/utils/token';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -25,7 +25,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				});
 
 				if (userRecord === null) {
-					throw new Error('User not registered');
+					const error = new CustomError('User not registered');
+					error.status = 401;
+					throw error;
 				}
 
 				const verifiedPassword = await argon2.verify(
@@ -33,7 +35,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 					loginInput.password.toString()
 				);
 				if (!verifiedPassword) {
-					throw new Error("Email / Password don't match");
+					const error = new CustomError("Email / Password don't match");
+					error.status = 401;
+					throw error;
 				}
 
 				const user = userRecord.toJSON();
@@ -55,7 +59,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 				return res.status(201).json({ message: { user, jwt: token.accessToken }, success: true });
 			} catch (error) {
-				errorController(error, req, res);
+				const errorObject = error as any;
+				errorController(errorObject, req, res);
 			}
 			break;
 		default:

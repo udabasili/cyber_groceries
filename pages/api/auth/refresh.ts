@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { AuthUser } from '@/features/auth';
 import dbConnect from '@/utils/dbConnect';
-import errorController from '@/utils/errorController';
+import errorController, { CustomError } from '@/utils/errorController';
 import { reIssueAccessToken } from '@/utils/token';
 
 interface CustomNextApiRequest extends NextApiRequest {
@@ -21,7 +21,9 @@ const handler = async (req: CustomNextApiRequest, res: NextApiResponse) => {
 			try {
 				const refreshToken = getCookie('X-Refresh-Token', { req, res }) || '';
 				if (!refreshToken) {
-					throw new Error('UnAuthorized');
+					const error = new CustomError('UnAuthorized');
+					error.status = 401;
+					throw error;
 				}
 				const tokens = await reIssueAccessToken(refreshToken?.toString());
 

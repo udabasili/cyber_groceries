@@ -2,6 +2,18 @@ import { MongoServerError } from 'mongodb';
 import { Error } from 'mongoose';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+export type IError = Error & {
+	status?: number;
+	code?: number;
+};
+export class CustomError extends Error {
+	constructor(public message: string, public status?: number, public code?: number) {
+		super(message);
+		this.status = status;
+		this.code = code;
+	}
+}
+
 //handle email or usename duplicates
 const handleDuplicateKeyError = (err: MongoServerError, res: NextApiResponse) => {
 	const field = Object.keys(err.keyValue);
@@ -26,19 +38,16 @@ const handleValidationError = (err: typeof Error.ValidationError, res: NextApiRe
 };
 
 const errorController = (err: any, req: NextApiRequest, res: NextApiResponse) => {
-	try {
-		if (err.name === 'ValidationError') return (err = handleValidationError(err, res));
-		if (err.code && err.code == 11000) return (err = handleDuplicateKeyError(err, res));
-		return res.status(400).json({
-			success: false,
-			message: (err as Error).message,
-		});
-	} catch (err) {
-		return res.status(500).json({
-			success: false,
-			message: (err as Error).message,
-		});
+	if (err.name === 'ValidationError') {
+		handleValidationError(err, res);
 	}
+	if (err.code && err.code == 11000) {
+		handleDuplicateKeyError(err, res);
+	}
+	return res.status(err.status || 500).json({
+		success: false,
+		message: (err as Error).message || 'Something went wrong',
+	});
 };
 
 export default errorController;

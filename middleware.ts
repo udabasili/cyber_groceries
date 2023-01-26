@@ -6,7 +6,7 @@ import type { NextRequest } from 'next/server';
 import { secretKey } from './config';
 
 export const config = {
-	matcher: ['/api/products/:function*', '/api/auth/me', '/api/wishlist'],
+	matcher: ['/api/auth/me', '/api/wishlist'],
 };
 
 interface CustomNextResponse extends NextResponse {

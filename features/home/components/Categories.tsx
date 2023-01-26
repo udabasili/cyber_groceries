@@ -9,8 +9,8 @@ import { CategoriesCard, CategoriesCards, CategoriesSection } from './index.styl
 
 export const Categories = () => {
 	return (
-		<CategoriesSection>
-			<div className="u-margin-bottom-medium u-center-text col-span-3">
+		<CategoriesSection data-cy="categories-section">
+			<div className="u-margin-bottom-medium u-center-text col-span-3" data-cy="categories">
 				<Header2 className="mb-2">Categories</Header2>
 				<p className="text-lg">See what our food collections</p>
 			</div>
@@ -25,11 +25,13 @@ export const Categories = () => {
 						<div className="background" />
 						<div className="card__content">
 							<h4 className="card__heading">{category.name}</h4>
-							<Link
-								href={`/categories/${category.name.toLowerCase().split(' ').join('-')}`}
-								legacyBehavior
-							>
-								<Button size="md" variant="dark" type="button">
+							<Link href={`/categories/${category.name.toLowerCase().split(' ').join('-')}`}>
+								<Button
+									size="md"
+									variant="dark"
+									type="button"
+									data-cy={`${category.name}--view-button`}
+								>
 									View
 								</Button>
 							</Link>

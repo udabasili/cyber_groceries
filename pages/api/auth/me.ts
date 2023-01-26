@@ -1,10 +1,9 @@
+import { confirmCurrentUser } from 'middleware/setCurrentUser';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { AuthUser } from '@/features/auth';
 import dbConnect from '@/utils/dbConnect';
 import errorController from '@/utils/errorController';
-
-import { confirmCurrentUser } from 'middleware/setCurrentUser';
 
 interface CustomNextApiRequest extends NextApiRequest {
 	currentUser: AuthUser;
@@ -21,7 +20,8 @@ async function handler(req: CustomNextApiRequest, res: NextApiResponse) {
 		await confirmCurrentUser(req, res);
 		return res.status(201).json({ message: { user: req.currentUser, jwt: 'token' }, success: true });
 	} catch (error) {
-		errorController(error, req, res);
+		const errorObject = error as any;
+		errorController(errorObject, req, res);
 	}
 }
 

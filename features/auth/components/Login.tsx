@@ -38,6 +38,7 @@ export const Login = ({ setAuthStateFn }: LoginProps) => {
 							error={errors['email']}
 							register={register('email')}
 							type={'email'}
+							data-cy=""
 						/>
 						<TextInput
 							name={'password'}
@@ -45,8 +46,9 @@ export const Login = ({ setAuthStateFn }: LoginProps) => {
 							error={errors['password']}
 							register={register('password')}
 							type={'password'}
+							data-cy=""
 						/>
-						<Button type="submit" variant="dark" size="md" isLoading={isLoading}>
+						<Button type="submit" variant="dark" size="md" isLoading={isLoading} data-cy="submit">
 							Submit
 						</Button>
 						<span

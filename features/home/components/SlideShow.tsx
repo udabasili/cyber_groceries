@@ -99,7 +99,13 @@ export const SlideShow = () => {
 								unlock long-term value and drive economic growth.
 							</p>
 							<Link passHref href="products">
-								<Button size="md" variant="primary" type="button" className="self-start">
+								<Button
+									size="md"
+									variant="primary"
+									type="button"
+									className="self-start"
+									data-cy="see-more-button"
+								>
 									See More
 								</Button>
 							</Link>

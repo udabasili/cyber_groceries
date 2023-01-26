@@ -10,7 +10,7 @@ export const AuthContainer = styled.div`
 	flex-direction: column;
 	background-image: url('/auth.jpg');
 	background-size: cover;
-	height: 90vh;
+	min-height: 100vh;
 `;
 
 export const AuthContent = styled.section`
@@ -21,11 +21,11 @@ export const AuthContent = styled.section`
 	flex-direction: column;
 	padding: 3rem 5rem;
 	width: 40vw;
-	max-height: 70vh;
+	min-height: 70vh;
 	overflow-y: auto;
 
 	${responsive.tabPort} {
-		width: max-content;
+		width: 70vw;
 	}
 
 	button {
