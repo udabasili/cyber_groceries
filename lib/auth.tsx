@@ -5,10 +5,12 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 
 import {
+	AuthUser,
 	getUser,
 	IUserResponse,
 	LoginCredentialsDTO,
 	loginWithEmailAndPassword,
+	logOut,
 	RegisterDataDTO,
 	registerWithEmailandPassword,
 } from '@/features/auth';
@@ -45,12 +47,12 @@ async function registerFn(data: RegisterDataDTO) {
 }
 
 async function logoutFn() {
-	window.location.assign(window.location.origin as unknown as string);
+	await logOut();
+	// window.location.assign(window.location.origin as unknown as string);
 }
 
 export const useRegister = () => {
 	const queryClient = useQueryClient();
-	const { setCurrentUser } = useContext(Context);
 	const router = useRouter();
 
 	const { mutate: register, isLoading } = useMutation((data: RegisterDataDTO) => registerFn(data), {
@@ -95,15 +97,13 @@ export const useGetCurrentUser = () => {
 };
 
 export const useLogin = () => {
-	const queryClient = useQueryClient();
 	const { setCurrentUser } = useContext(Context);
 	const router = useRouter();
 
 	const { mutate: login, isLoading } = useMutation((data: LoginCredentialsDTO) => loginFn(data), {
 		onSuccess: (response) => {
-			setCurrentUser(response);
-			queryClient.invalidateQueries(['user']);
 			router.push('/');
+			setCurrentUser(response);
 		},
 		onError: (error: unknown) => {
 			const errorObject = error as AxiosError & Error;
@@ -117,9 +117,10 @@ export const useLogin = () => {
 };
 
 export const useLogout = () => {
+	const { setCurrentUser } = useContext(Context);
 	const { mutate: logoutUser, isLoading } = useMutation(() => logoutFn(), {
 		onSuccess: () => {
-			window.location.href = '/auth';
+			setCurrentUser({} as AuthUser);
 			toast.success('Logged out');
 		},
 		onError: (error: unknown) => {

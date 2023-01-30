@@ -3,6 +3,7 @@ import * as yup from 'yup';
 
 import { Button } from '@/components/Elements/Button';
 import { Form, TextInput } from '@/components/form';
+import { adminAccount } from '@/data/sampleUser';
 import { useLogin } from '@/lib/auth';
 
 const schema = yup.object().shape({
@@ -29,7 +30,15 @@ export const Login = ({ setAuthStateFn }: LoginProps) => {
 	return (
 		<>
 			<h1 className="text-xl font-bold center mb-5 self-center"> Sign in to your account </h1>
-			<Form<LoginValues, typeof schema> onSubmitFn={onSubmit} schema={schema}>
+			<Form<LoginValues, typeof schema>
+				onSubmitFn={onSubmit}
+				schema={schema}
+				resetDefaultValues={true}
+				defaultValues={{
+					email: adminAccount.email,
+					password: adminAccount.password,
+				}}
+			>
 				{({ register, formState: { errors } }) => (
 					<>
 						<TextInput
@@ -51,7 +60,7 @@ export const Login = ({ setAuthStateFn }: LoginProps) => {
 						<Button type="submit" variant="dark" size="md" isLoading={isLoading} data-cy="submit">
 							Submit
 						</Button>
-						<span
+						{/* <span
 							role="button"
 							onClick={() => setAuthStateFn('register')}
 							tabIndex={-1}
@@ -59,7 +68,7 @@ export const Login = ({ setAuthStateFn }: LoginProps) => {
 							className="flex flex-1 mt-5 self-center cursor-pointer text-green-700 text-md font-header hover:opacity-70"
 						>
 							<p className="">Don&apos;t have an account? </p>
-						</span>
+						</span> */}
 					</>
 				)}
 			</Form>

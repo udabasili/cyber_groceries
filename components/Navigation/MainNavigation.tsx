@@ -2,13 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext, useRef, useState } from 'react';
-import { AiFillCloseCircle, AiFillHome, AiFillPhone, AiFillShop } from 'react-icons/ai';
+import { AiFillCloseCircle, AiFillHome, AiFillPhone, AiFillShop, AiOutlineLogout } from 'react-icons/ai';
 import { BiCategoryAlt } from 'react-icons/bi';
-import { BsGlobe2 } from 'react-icons/bs';
 import { FaSearch, FaUserAlt } from 'react-icons/fa';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 import { RiAdminFill } from 'react-icons/ri';
 
+import { useLogout } from '@/lib/auth';
 import { ROLES, useAuthorization } from '@/lib/authorization';
 import { Context } from '@/store/appContext';
 
@@ -106,7 +106,8 @@ export const MainNavigation = () => {
 	const currentRef = useRef<HTMLInputElement>(null);
 	const [openSearchModal, setOpenSearchModal] = useState(false);
 	const [openCartModal, setOpenCartModal] = useState(false);
-	const { cart } = useContext(Context);
+	const { cart, isAuthenticated } = useContext(Context);
+	const { logoutUser } = useLogout();
 
 	function closeMobileNavigation() {
 		if (currentRef.current) {
@@ -133,9 +134,16 @@ export const MainNavigation = () => {
 						</NavigationMenuLink>
 					</NavigationMenuItem>
 				</NavigationMenu>
-				<BsGlobe2 size="1.1rem" className="navigation-language" color="#000000">
-					Language
-				</BsGlobe2>
+				{isAuthenticated ? (
+					<AiOutlineLogout
+						size="2rem"
+						className="navigation-language cursor-pointer"
+						color="var(--primary)"
+						onClick={() => logoutUser()}
+					>
+						Logout
+					</AiOutlineLogout>
+				) : null}
 			</div>
 			<div className="navigation-bottom row">
 				<MobileNav ref={currentRef} />
