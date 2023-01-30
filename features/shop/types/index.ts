@@ -1,12 +1,19 @@
 import { category } from '@/data/categories';
-import { products } from '@/data/products';
 
 const filter = {
 	prices: [20, 50] as [number, number],
 	categories: [] as Array<typeof category[number]>,
 };
 
-export type ProductProps = typeof products[0];
+export type ProductProps = {
+	_id: string;
+	name: string;
+	imageUrl: string;
+	rating: number;
+	price: number;
+	description: string;
+	category: string;
+};
 
 export type IProductsResponse = {
 	message: {
@@ -17,6 +24,14 @@ export type IProductsResponse = {
 			endIndex: number;
 			total: number;
 		};
+	};
+	status: number;
+	success: boolean;
+};
+
+export type IProductResponse = {
+	message: {
+		product: ProductProps;
 	};
 	status: number;
 	success: boolean;

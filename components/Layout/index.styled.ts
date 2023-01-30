@@ -8,13 +8,12 @@ export const Container = styled.div`
 	font-weight: normal;
 	font-size: 0.9rem;
 	line-height: 1.5;
-	grid-template-rows: max-content 1fr max-content;
 `;
 
 export const Main = styled.main`
 	display: grid;
 	grid-template-columns: inherit;
 	grid-column: full-start / full-end;
-	margin-top: 10rem;
+	padding-top: 10rem;
 	background-color: var(--background);
 `;

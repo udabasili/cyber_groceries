@@ -12,7 +12,7 @@ export const Categories = () => {
 		<CategoriesSection data-cy="categories-section">
 			<div className="u-margin-bottom-medium u-center-text col-span-3" data-cy="categories">
 				<Header2 className="mb-2">Categories</Header2>
-				<p className="text-lg">See what our food collections</p>
+				<p className="text-lg">See our catalog</p>
 			</div>
 			<CategoriesCards>
 				{categoryWithRemovedBackground.map((category) => (

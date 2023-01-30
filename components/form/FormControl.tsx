@@ -17,7 +17,7 @@ export type CustomFormControlProps = Omit<FormControlProps, 'children'>;
 export const FormControl = (props: FormControlProps) => {
 	const { children, containerClass, name, label, error } = props;
 	return (
-		<FormControlContainer className={clsx([containerClass])}>
+		<FormControlContainer className={clsx(['form-control', containerClass])}>
 			{children}
 			<Label htmlFor={name} className="form__label">
 				{label}

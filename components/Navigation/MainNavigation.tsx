@@ -2,16 +2,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext, useRef, useState } from 'react';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { AiFillCloseCircle, AiFillHome, AiFillPhone, AiFillShop } from 'react-icons/ai';
+import { BiCategoryAlt } from 'react-icons/bi';
 import { BsGlobe2 } from 'react-icons/bs';
 import { FaSearch, FaUserAlt } from 'react-icons/fa';
+import { IoIosInformationCircleOutline } from 'react-icons/io';
+import { RiAdminFill } from 'react-icons/ri';
 
+import { ROLES, useAuthorization } from '@/lib/authorization';
 import { Context } from '@/store/appContext';
 
 import { Cart } from '../Cart';
 import { Button } from '../Elements/Button';
 import { Drawer } from '../Elements/Drawer';
-import { SearchComponent } from '../SearchComponent';
 
 import {
 	AppLogo,
@@ -23,7 +26,7 @@ import {
 	NavLink,
 } from './index.styled';
 import { MobileNav } from './MobileNavigationButton';
-import { navData } from './navigationContent';
+import { NavProps } from './navigationContent';
 
 type NavigationProps = {
 	closeMobileNavigation: () => void;
@@ -35,10 +38,12 @@ type CartFooterProps = {
 export const CartFooter = ({ close }: CartFooterProps) => {
 	return (
 		<div className="flex flex-1 justify-between">
-			<Button size="sm" variant="primary" type="submit">
-				Checkout
-			</Button>
-			<Button size="sm" variant="danger" type="submit" onClick={close}>
+			<Link href="/checkout">
+				<Button size="sm" variant="primary" type="submit">
+					Checkout
+				</Button>
+			</Link>
+			<Button size="sm" variant="danger" type="submit" onClick={close} data-cy="close-cart-button">
 				Close
 			</Button>
 		</div>
@@ -47,6 +52,40 @@ export const CartFooter = ({ close }: CartFooterProps) => {
 
 const Navigation = ({ closeMobileNavigation }: NavigationProps) => {
 	const router = useRouter();
+	const { checkAccess } = useAuthorization();
+
+	const navData = [
+		{
+			name: 'home',
+			href: '/',
+			icon: AiFillHome,
+		},
+		checkAccess({ allowedRoles: ROLES.Admin }) && {
+			name: 'admin',
+			href: '/admin',
+			icon: RiAdminFill,
+		},
+		checkAccess({ allowedRoles: ROLES.User }) && {
+			name: 'products',
+			href: '/products',
+			icon: AiFillShop,
+		},
+		{
+			name: 'categories',
+			href: '/categories',
+			icon: BiCategoryAlt,
+		},
+		{
+			name: 'about',
+			href: '/about',
+			icon: IoIosInformationCircleOutline,
+		},
+		{
+			name: 'contact',
+			href: '/contact',
+			icon: AiFillPhone,
+		},
+	].filter(Boolean) as NavProps[];
 
 	return (
 		<Nav className="navigation-nav">
@@ -105,12 +144,17 @@ export const MainNavigation = () => {
 				<button
 					title="Shopping Cart"
 					onClick={() => setOpenCartModal(true)}
+					data-cy="cart-button"
 					className=" relative text-white mr-4 bg-primary hover:bg-neutral-400 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center "
 				>
-					<span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
-						{cart?.length ? cart.length.toString() : 0}
-					</span>
-
+					{cart?.length > 0 && (
+						<span
+							className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900"
+							data-cy="cart-count"
+						>
+							{cart.length.toString()}
+						</span>
+					)}
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -151,7 +195,6 @@ export const MainNavigation = () => {
 					</button>
 				</Link>
 			</div>
-			<SearchComponent isOpen={openSearchModal} close={() => setOpenSearchModal(false)} />
 			<Drawer
 				isOpen={openCartModal}
 				close={() => setOpenCartModal(false)}

@@ -26,7 +26,7 @@ export const Drawer = (props: DrawerProps) => {
 				unmount={false}
 				open={isOpen}
 				onClose={close}
-				className="fixed z-30 inset-0 overflow-y-auto left-0 top-0 h-screen"
+				className="fixed z-[100] inset-0 overflow-y-auto left-0 top-0 h-screen"
 			>
 				<div className="flex w-3/4 h-screen mobile:w-screen">
 					<Dialog.Overlay className="z-40 fixed inset-0 bg-black bg-opacity-30" />

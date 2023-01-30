@@ -4,7 +4,7 @@ import { Container } from './index.styled';
 
 export const LoadingScreen = () => {
 	return (
-		<Container>
+		<Container data-cy="loading">
 			<div className="loading" />
 		</Container>
 	);

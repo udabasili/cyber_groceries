@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { products } from '@/data/products';
+import { ProductProps } from '@/features/shop';
+import Products from '@/models/Products';
+import dbConnect from '@/utils/dbConnect';
 import { paginate } from '@/utils/pagination';
 
 type Data = {
@@ -19,18 +21,20 @@ interface QueryObject extends NextApiRequest {
 	};
 }
 
-export default function handler(req: QueryObject, res: NextApiResponse<Data>) {
+export default async function handler(req: QueryObject, res: NextApiResponse<Data>) {
 	const { method, query } = req;
 
+	await dbConnect();
 	switch (method) {
 		case 'GET': {
 			const { min, max, page, category } = query;
+			const products = await Products.find({});
 			let filteredProducts = products;
 			const currentPage = Number(page);
 			if (category) {
 				const categoryArray = category.split(',');
 				filteredProducts = products.filter((data) => {
-					return categoryArray.includes(data.type as typeof category[number]);
+					return categoryArray.includes(data.category as typeof category[number]);
 				});
 			}
 			if (max && min) {

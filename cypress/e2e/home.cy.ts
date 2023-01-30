@@ -27,4 +27,3 @@ describe('Home Page', () => {
 		});
 	});
 });
-export {};

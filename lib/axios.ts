@@ -16,18 +16,20 @@ apiCall.interceptors.request.use((config) => {
 	if (token && config.headers) {
 		config.headers.authorization = `Bearer ${token}`;
 	}
-
+	config.headers.accept = 'application/json';
 	return config;
 });
 
 apiCall.interceptors.response.use(
 	(response) => {
+		console.log(response.data);
 		return response;
 	},
 	async (error) => {
 		const originalRequest = error.config;
 		const errName = error.response?.data?.name as string;
-		if (errName && errName.includes('JWTExpired') && !originalRequest._retry) {
+		console.log(error.response?.data);
+		if (errName && errName.includes('Expired') && !originalRequest._retry) {
 			originalRequest._retry = true;
 			const response = await refreshAccessTokenFn();
 			const { jwt } = response.message;

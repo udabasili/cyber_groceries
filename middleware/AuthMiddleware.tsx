@@ -24,20 +24,21 @@ const AuthMiddleware: React.FC<AuthMiddlewareProps> = ({ children }) => {
 	}, []);
 
 	useQuery(['authUser'], () => getCurrentUserFn(), {
-		enabled: !!cookies.logged_in,
 		select: (data) => data,
 		onSuccess: (response) => {
 			setLoading(false);
-			setCurrentUser(response);
+			console.log(response, 1);
+			setCurrentUser(response ? response : {});
 		},
 		onError: () => {
 			setLoading(false);
+			console.log('response', 2);
 			setCurrentUser({} as AuthUser);
 		},
 		refetchOnWindowFocus: false,
 		refetchOnMount: false,
 		refetchOnReconnect: false,
-		retry: 1,
+		retry: false,
 	});
 
 	if (loading) {

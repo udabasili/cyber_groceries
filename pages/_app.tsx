@@ -1,4 +1,6 @@
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 
@@ -22,6 +24,20 @@ const queryClient = new QueryClient({
 	},
 });
 export default function App({ Component, pageProps }: AppProps) {
+	const router = useRouter();
+
+	useEffect(() => storePathValues, [router.asPath]);
+
+	function storePathValues() {
+		const storage = globalThis?.sessionStorage;
+		if (!storage) return;
+		// Set the previous path as the value of the current path.
+		const prevPath = storage.getItem('currentPath');
+		storage.setItem('prevPath', prevPath as string);
+		// Set the current path value by looking at the browser's location object.
+		storage.setItem('currentPath', globalThis.location.pathname);
+	}
+
 	return (
 		<>
 			<style jsx global>

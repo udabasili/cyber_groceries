@@ -133,10 +133,6 @@ export const ProductListSection = styled.section`
 	}
 `;
 
-export const Pagination = styled.div`
-	grid-column: 1 / -1;
-`;
-
 /** Sort Component */
 
 export const SortContainer = styled.div`

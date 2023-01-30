@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -61,21 +62,21 @@ const SlideController = ({ currentSlide, setCurrentSlide }: SlideControllerProps
 				onClick={() => setCurrentSlide(0)}
 				role="button"
 				tabIndex={-1}
-				onKeyUp={() => (f: any) => f}
+				onKeyUp={() => (f: unknown) => f}
 			></span>
 			<span
 				className={clsx(['dot', currentSlide === 1 ? 'active' : ''])}
 				onClick={() => setCurrentSlide(1)}
 				role="button"
 				tabIndex={-1}
-				onKeyUp={() => (f: any) => f}
+				onKeyUp={() => (f: unknown) => f}
 			></span>
 			<span
 				className={clsx(['dot', currentSlide === 2 ? 'active' : ''])}
 				onClick={() => setCurrentSlide(2)}
 				role="button"
 				tabIndex={-1}
-				onKeyUp={() => (f: any) => f}
+				onKeyUp={() => (f: unknown) => f}
 			></span>
 		</SlideControllerContainer>
 	);
@@ -93,10 +94,9 @@ export const SlideShow = () => {
 				>
 					<SlideContent>
 						<div className="w-1/2 flex flex-col">
-							<Header1 className="u-margin-bottom-small ">Checkout our weekend prices</Header1>
+							<Header1 className="u-margin-bottom-small ">Fresh Approach to Shopping.</Header1>
 							<p className="mb-6 text-gray-500 ">
-								Here at Flowbite we focus on markets where technology, innovation, and capital can
-								unlock long-term value and drive economic growth.
+								Here at Cyber groceries we sell you quality grocery products.
 							</p>
 							<Link passHref href="products">
 								<Button

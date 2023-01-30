@@ -10,10 +10,10 @@ export const ProductList = ({ currentItems }: { currentItems: Array<ProductProps
 			{currentItems &&
 				currentItems.map((item) => (
 					<ProductCard
-						key={item.title}
-						imageUrl={`/images/${item.filename}`}
-						name={item.title}
-						category={item.type}
+						key={item.name}
+						imageUrl={item.imageUrl}
+						name={item.name}
+						category={item.category}
 						price={item.price}
 						rating={item.rating}
 					/>

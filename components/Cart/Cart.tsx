@@ -26,7 +26,12 @@ export const CartItem = (props: CartItemProps) => {
 			<span className="quantity">x {quantity}</span>
 			<span className="name">{name}</span>
 			<span className="price">${price}</span>
-			<AiFillCloseCircle size="22px" role="button" onClick={() => removeItemFromCart(id)} />
+			<AiFillCloseCircle
+				size="22px"
+				role="button"
+				onClick={() => removeItemFromCart(id)}
+				data-cy="remove-button"
+			/>
 		</CartItemContainer>
 	);
 };
@@ -36,7 +41,7 @@ export const Cart = () => {
 
 	return (
 		<>
-			<CartBody>
+			<CartBody data-cy="cart">
 				{cart?.length ? (
 					cart.map(({ imageUrl, quantity, name, price, id }, index) => (
 						<CartItem image={imageUrl} quantity={quantity} name={name} price={price} key={index} id={id} />

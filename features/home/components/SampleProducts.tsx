@@ -14,8 +14,8 @@ import { CartItem } from '@/types/cart';
 import { SampleProduct, SampleProductsContent, SampleProductsSection } from './index.styled';
 
 export const SampleProducts = () => {
-	const { addItemToCart, currentUser } = useContext(Context);
-	const { addToWishList, isLoading } = useAddToWisList();
+	const { addItemToCart } = useContext(Context);
+	const { addToWishList } = useAddToWisList();
 
 	function addToCart(item: CartItem) {
 		addItemToCart(item);
@@ -34,7 +34,7 @@ export const SampleProducts = () => {
 						<Header3 className="sample-products__header mb-3">Sample {categories[0].name}</Header3>
 						<ul className="flex flex-col sample-products__list">
 							{products
-								.filter((product, index) => product.type === categories[0].name)
+								.filter((product) => product.type === categories[0].name)
 								.filter((_, index) => index < 3)
 								.map((product) => (
 									<li className="card" key={product.filename}>

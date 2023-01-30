@@ -24,7 +24,7 @@ export const Subscribe = () => {
 							type="email"
 							id="email"
 							className="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-90 block flex-1 min-w-0 w-full text-sm p-2.5 "
-							placeholder="Bonnie Green"
+							placeholder="Enter you email here..."
 						/>
 						<Button variant="dark" size="md" type="button" className="ml-3">
 							Subscribe

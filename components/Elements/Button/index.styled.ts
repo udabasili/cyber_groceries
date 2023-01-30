@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { responsive } from '@/utils/responsive';
+
 export const ButtonComponent = styled.button`
 	display: inline-flex;
 	align-items: center;
@@ -26,12 +28,20 @@ export const ButtonComponent = styled.button`
 		padding: 12px 22px;
 		font-size: 0.7rem;
 		line-height: 16px;
+
+		${responsive.mobile} {
+			font-size: 0.6rem;
+		}
 	}
 
 	&.md {
 		padding: 16px 30px;
 		font-size: 0.9rem;
 		line-height: 16px;
+
+		${responsive.mobile} {
+			font-size: 0.8rem;
+		}
 	}
 
 	&.lg {

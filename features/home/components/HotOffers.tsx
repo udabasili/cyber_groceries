@@ -37,9 +37,6 @@ export const HotOffers = () => {
 					<p className=" font-normal text-gray-500 dark:text-gray-400 u-margin-bottom-medium ">
 						Go to this step by step guideline process on how to certify for your weekly benefits:
 					</p>
-					<Button size="sm" variant="inverse" type="button">
-						Get Now
-					</Button>
 				</div>
 			</DiscountCard>
 			<DiscountCard className="discount-card discount-card__1-of-3"></DiscountCard>

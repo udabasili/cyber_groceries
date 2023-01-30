@@ -83,6 +83,7 @@ export const ProductCard = (props: ProductCardProps) => {
 						type="button"
 						size="sm"
 						className="product-card__button"
+						data-cy="product-card-button"
 						startIcon={<BsCart />}
 						onClick={() =>
 							addToCart({

@@ -21,9 +21,6 @@ html {
 }
 
 @media screen and (max-width: 900px) {
-	html {
-		--nav-height: 15vh;
-	}
 }
 
 .paragraph {

@@ -15,9 +15,9 @@ async function handler(req: CustomNextApiRequest, res: NextApiResponse) {
 	}
 
 	await dbConnect();
+	await confirmCurrentUser(req, res);
 
 	try {
-		await confirmCurrentUser(req, res);
 		return res.status(201).json({ message: { user: req.currentUser, jwt: 'token' }, success: true });
 	} catch (error) {
 		const errorObject = error as any;

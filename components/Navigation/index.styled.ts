@@ -12,7 +12,7 @@ export const MainNavigationContainer = styled.div`
 	width: 100vw;
 	display: grid;
 	grid-template-columns: 1fr;
-	z-index: 20;
+	z-index: 90;
 
 	.row {
 		display: grid;
@@ -29,6 +29,12 @@ export const MainNavigationContainer = styled.div`
 
 		.nav-background {
 			display: none;
+			background-color: rgba(0, 0, 0, 1);
+			top: 0;
+			left: 0;
+			z-index: 40;
+			position: fixed;
+			height: 100vh;
 		}
 	}
 `;
@@ -43,7 +49,7 @@ export const AppLogo = styled.div`
 	align-items: center;
 
 	${responsive.tabPort} {
-		font-size: 1.4rem;
+		font-size: 1rem;
 
 		img {
 			width: 1.5rem;
@@ -115,7 +121,7 @@ export const Nav = styled.nav`
 		left: 0;
 		top: 0;
 		height: 100vh;
-		z-index: 50;
+		z-index: 200;
 		width: 0;
 		justify-content: center;
 		background-color: white;
@@ -246,12 +252,6 @@ export const MobileNavInput = styled.input`
 
 		&:checked ~ .nav-background {
 			width: 100vw;
-			height: 100vh;
-			background-color: rgba(0, 0, 0, 0.9);
-			top: 0;
-			left: 0;
-			z-index: 40;
-			position: fixed;
 			display: block;
 		}
 

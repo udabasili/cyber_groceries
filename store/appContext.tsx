@@ -21,6 +21,7 @@ const initialState = {
 	addItemToCart: (e: CartItem) => {},
 	removeItemFromCart: (e: string) => {},
 	clearItemFromCart: (e: string) => {},
+	clearCart: () => {},
 };
 
 type Action =
@@ -43,6 +44,9 @@ type Action =
 	| {
 			type: 'CLEAR_FROM_CART';
 			payload: string;
+	  }
+	| {
+			type: 'CLEAR_CART';
 	  };
 
 const reducer = (state: State, action: Action) => {
@@ -70,6 +74,12 @@ const reducer = (state: State, action: Action) => {
 			return {
 				...state,
 				cart: clearItemFromCart(action.payload, state.cart),
+			};
+		}
+		case 'CLEAR_CART': {
+			return {
+				...state,
+				cart: [],
 			};
 		}
 		case 'INITIALIZE_CART': {
@@ -133,6 +143,13 @@ export const AppContext = ({ children }: Props) => {
 						type: 'CLEAR_FROM_CART',
 						payload: item,
 					}),
+				clearCart: () => {
+					cartStorage.clearCart();
+
+					dispatch({
+						type: 'CLEAR_CART',
+					});
+				},
 			}}
 		>
 			{children}

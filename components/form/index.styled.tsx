@@ -9,6 +9,13 @@ export const FormControlContainer = styled.div`
 	border: 1px solid black;
 	grid-column: 1;
 	border-radius: 4px;
+
+	.form-control.form-control--text-area {
+		grid-template-rows: min-content 1fr min-content;
+		height: 15rem;
+		margin-bottom: 5rem;
+		border-radius: 4px;
+	}
 `;
 export const InputContainer = styled.input`
 	border: none;
@@ -17,15 +24,12 @@ export const InputContainer = styled.input`
 	outline: none;
 	background-color: transparent;
 
-	&.text-area {
+	&.input {
 		border: none;
-		padding: 0.8rem 0;
-		padding-left: 1rem;
+		font-size: 1.1rem;
+		padding: 0.4rem 1.4rem;
 		outline: none;
-
-		&:focus ~ .form__label {
-			font-size: 0.7rem;
-		}
+		background-color: transparent;
 	}
 
 	&:focus ~ .form__label {
@@ -38,6 +42,48 @@ export const InputContainer = styled.input`
 		border-color: #80bdff;
 		outline: 0;
 		box-shadow: none !important;
+	}
+`;
+
+export const SelectContainer = styled.select`
+	border: none;
+	font-size: 1.1rem;
+	padding: 0.4rem 1.4rem;
+	outline: none;
+	background-color: transparent;
+
+	&.input {
+		border: none;
+		font-size: 1.1rem;
+		padding: 0.4rem 1.4rem;
+		outline: none;
+		background-color: transparent;
+	}
+
+	&:focus ~ .form__label {
+		font-size: 0.6rem;
+	}
+
+	&:focus {
+		outline: 0;
+		box-shadow: none !important;
+	}
+`;
+
+export const TextArea = styled.textarea`
+	border: none;
+	padding: 0.8rem 0;
+	padding-left: 1rem;
+	outline: none;
+
+	&:focus ~ .form__label {
+		font-size: 0.7rem;
+	}
+
+	&:focus {
+		outline: none !important;
+		border: none !important;
+		box-shadow: none;
 	}
 `;
 

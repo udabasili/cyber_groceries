@@ -6,11 +6,12 @@ export type IError = Error & {
 	status?: number;
 	code?: number;
 };
-export class CustomError extends Error {
-	constructor(public message: string, public status?: number, public code?: number) {
-		super(message);
+export class CustomError {
+	constructor(public message: string, public status?: number, public code?: number, public name?: any) {
+		this.message = message;
 		this.status = status;
 		this.code = code;
+		this.name = typeof name === 'string' ? name : '';
 	}
 }
 
@@ -30,23 +31,24 @@ const handleValidationError = (err: typeof Error.ValidationError, res: NextApiRe
 		const code = 400;
 		if (errors.length > 1) {
 			const formattedErrors = errors.join('');
-			res.status(code).json({ messages: formattedErrors, fields: fields, success: false });
+			return res.status(code).json({ message: formattedErrors[0], fields: fields, success: false });
 		} else {
-			res.status(code).json({ messages: errors, fields: fields, success: false });
+			return res.status(code).json({ message: errors[0], fields: fields, success: false });
 		}
 	}
 };
 
 const errorController = (err: any, req: NextApiRequest, res: NextApiResponse) => {
 	if (err.name === 'ValidationError') {
-		handleValidationError(err, res);
+		return handleValidationError(err, res);
 	}
 	if (err.code && err.code == 11000) {
-		handleDuplicateKeyError(err, res);
+		return handleDuplicateKeyError(err, res);
 	}
 	return res.status(err.status || 500).json({
 		success: false,
-		message: (err as Error).message || 'Something went wrong',
+		message: (err as IError).message || 'Something went wrong',
+		name: (err as IError).name || 'Error',
 	});
 };
 
