@@ -1,13 +1,56 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
+import { AiFillHome, AiFillShop, AiFillPhone } from 'react-icons/ai';
+import { BiCategoryAlt } from 'react-icons/bi';
+import { IoIosInformationCircleOutline } from 'react-icons/io';
+import { RiAdminFill } from 'react-icons/ri';
 
-import { navData } from '../Navigation/navigationContent';
+import { useAuthorization, ROLES } from '@/lib/authorization';
+
+import { NavProps } from '../Navigation/navigationContent';
 
 import { FooterContainer } from './index.styled';
 
 export const Footer = () => {
+	const router = useRouter();
+	const { checkAccess } = useAuthorization();
+
+	const navData = [
+		{
+			name: 'home',
+			href: '/',
+			icon: AiFillHome,
+		},
+		checkAccess({ allowedRoles: ROLES.Admin }) && {
+			name: 'admin',
+			href: '/admin',
+			icon: RiAdminFill,
+		},
+		checkAccess({ allowedRoles: ROLES.User }) && {
+			name: 'products',
+			href: '/products',
+			icon: AiFillShop,
+		},
+		{
+			name: 'categories',
+			href: '/categories',
+			icon: BiCategoryAlt,
+		},
+		{
+			name: 'about',
+			href: '/about',
+			icon: IoIosInformationCircleOutline,
+		},
+		{
+			name: 'contact',
+			href: '/contact',
+			icon: AiFillPhone,
+		},
+	].filter(Boolean) as NavProps[];
+
 	return (
 		<FooterContainer className="p-4 sm:p-6 bg-red-900">
 			<div className="md:flex md:justify-between">
