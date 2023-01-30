@@ -65,7 +65,7 @@ const Navigation = ({ closeMobileNavigation }: NavigationProps) => {
 			href: '/admin',
 			icon: RiAdminFill,
 		},
-		checkAccess({ allowedRoles: ROLES.User }) && {
+		{
 			name: 'products',
 			href: '/products',
 			icon: AiFillShop,

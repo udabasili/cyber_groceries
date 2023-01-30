@@ -27,7 +27,7 @@ export const Footer = () => {
 			href: '/admin',
 			icon: RiAdminFill,
 		},
-		checkAccess({ allowedRoles: ROLES.User }) && {
+		{
 			name: 'products',
 			href: '/products',
 			icon: AiFillShop,
