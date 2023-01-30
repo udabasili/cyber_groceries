@@ -27,7 +27,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/udabasili/cyber_groceries">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://user-images.githubusercontent.com/33573587/215441092-40115f1f-2b66-40fd-88cb-03f22323a9b0.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Cyber Groceries</h3>
