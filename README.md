@@ -101,7 +101,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-The best way is to visit the Vercel website for the deployed website  [Web Plannerly](https://web-plannerly.vercel.app/).
+The best way is to visit the Vercel website for the deployed website  [Cyber Groceries](https://cyber-groceries.vercel.app/).
 
 <!-- SCREENSHOTS EXAMPLES -->
 ## ScreenShots
