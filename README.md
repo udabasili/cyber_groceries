@@ -38,7 +38,7 @@
     <a href="https://github.com/udabasili/cyber_groceries"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/udabasili/cyber_groceries">View Demo</a>
+    <a href="https://cyber-groceries.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/udabasili/cyber_groceries/issues">Report Bug</a>
     ·
