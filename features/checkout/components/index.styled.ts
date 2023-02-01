@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
+import { responsive } from '@/utils/responsive';
+
 export const CheckoutSection = styled.section`
 	display: grid;
 	grid-column: full-start / full-end;
 	grid-template-columns: repeat(2, 1fr);
 	min-height: 100vh;
 	overflow-y: auto;
+
+	${responsive.tabPort} {
+		grid-template-columns: 1fr;
+	}
 `;
 
 export const Container = styled.div`

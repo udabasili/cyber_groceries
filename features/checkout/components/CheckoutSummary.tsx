@@ -53,7 +53,7 @@ export const CheckoutSummary = () => {
 		}
 	}, [cart]);
 	return (
-		<Container className="summary py-5 px-8 w-[70%] justify-self-center">
+		<Container className="summary py-5 px-8 w-[70%] justify-self-center tabPort:py-14 tabPort:w-[100%]">
 			<Header3 className="u-margin-bottom-small">Cart Summary</Header3>
 			<div className="flex items-center space-x-2 border-t my-5 border-gray-200 rounded-b dark:border-gray-600">
 				<ul className="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400 flex flex-1 flex-col">

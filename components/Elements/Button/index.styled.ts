@@ -19,6 +19,7 @@ export const ButtonComponent = styled.button`
 	outline: none;
 	appearance: none;
 	transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+	overflow: hidden;
 
 	& > * {
 		margin-right: 2px;

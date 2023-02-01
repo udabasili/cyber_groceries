@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { loadStripe } from '@stripe/stripe-js';
 import Image from 'next/image';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { Button } from '@/components/Elements/Button';
@@ -15,9 +15,11 @@ import { Container } from './index.styled';
 export const CheckoutForm = () => {
 	const stripePromise = loadStripe(publicStrip);
 	const { cart } = useContext(Context);
+	const [isLoading, setLoading] = useState(false);
 
 	const handleCheckout = async () => {
 		try {
+			setLoading(true);
 			const stripe = await stripePromise;
 			const reformatCart = cart.map((item) => ({
 				price_data: {
@@ -30,23 +32,35 @@ export const CheckoutForm = () => {
 				quantity: item.quantity,
 			}));
 			const checkoutSession = await apiCall.post('/checkout-session', { cart: reformatCart });
+
 			if (stripe) {
 				const result = await stripe.redirectToCheckout({
 					sessionId: checkoutSession.data.id,
 				});
+				setLoading(false);
 
 				if (result.error) {
+					setLoading(false);
+
 					toast.error(result.error.message);
 					return;
 				}
 			}
 		} catch (error) {
+			setLoading(false);
 			console.log(error);
 		}
 	};
 	return (
 		<Container className="form flex flex-col items-start mx-5">
-			<Button variant="primary" type="button" size="md" onClick={handleCheckout} className="my-6">
+			<Button
+				variant="primary"
+				type="button"
+				size="md"
+				onClick={handleCheckout}
+				className="my-6"
+				isLoading={isLoading}
+			>
 				Checkout
 			</Button>
 			<Header4 className="">Use the relevant data below to fill the form in the next page</Header4>

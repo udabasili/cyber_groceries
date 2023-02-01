@@ -49,14 +49,14 @@ export const ProductCard = (props: ProductCardProps) => {
 				</div>
 			) : null}
 
-			<div className="icons">
+			{/* <div className="icons">
 				<div className="icon" title="Add to Wishlist">
 					<BsHeartFill color="red" />
 				</div>
 				<div className="icon" title="View Product">
 					<IoMdOpen />
 				</div>
-			</div>
+			</div> */}
 			<div className="product-card__content">
 				<span className="product-card__category">{category}</span>
 				<Header3 className="product-card__name">{name}</Header3>

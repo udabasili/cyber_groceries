@@ -44,10 +44,10 @@ export const FilterContainer = styled.aside`
 	${responsive.tabPort} {
 		grid-column: 1 / 2;
 		grid-row: 1;
-		background-color: red;
 
 		.filter-button {
 			display: flex;
+			background-color: transparent;
 		}
 	}
 `;
@@ -56,6 +56,10 @@ export const FilterContentContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 3rem 2rem;
+
+	${responsive.tabPort} {
+		padding: 0.1rem 2rem;
+	}
 
 	.filter {
 		display: flex;

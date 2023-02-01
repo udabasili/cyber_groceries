@@ -70,7 +70,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				<AppContext>
 					<AuthMiddleware>
 						<>
-							<Component {...pageProps} />;
+							<Component {...pageProps} />
 						</>
 					</AuthMiddleware>
 				</AppContext>

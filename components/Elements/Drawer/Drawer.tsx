@@ -26,9 +26,9 @@ export const Drawer = (props: DrawerProps) => {
 				unmount={false}
 				open={isOpen}
 				onClose={close}
-				className="fixed z-[100] inset-0 overflow-y-auto left-0 top-0 h-screen"
+				className="fixed z-[100] inset-0 overflow-y-auto left-0 top-0 h-screen "
 			>
-				<div className="flex w-3/4 h-screen mobile:w-screen">
+				<div className="flex w-3/4 h-screen mobile:w-screen tabPort:h-[100vh] ">
 					<Dialog.Overlay className="z-40 fixed inset-0 bg-black bg-opacity-30" />
 					<div
 						className={`z-50 flex flex-col justify-between bg-white w-full
@@ -36,21 +36,22 @@ export const Drawer = (props: DrawerProps) => {
                          shadow-xl`}
 					>
 						<div>
-							<Dialog.Title className="font-bold text-2xl md:text-4xl text-blue-400">
+							<Dialog.Title className="font-bold text-2xl md:text-4xl text-blue-400 h-[10vh]">
 								{title}
 							</Dialog.Title>
 
-							<Dialog.Description className="overflow-y-auto h-[70vh]">{children}</Dialog.Description>
-						</div>
-
-						<div className=" mt-10">
-							{renderFooter ? (
-								renderFooter
-							) : (
-								<Button variant="danger" type="button" size="md" onClick={close}>
-									Close
-								</Button>
-							)}
+							<Dialog.Description className=" tabPort:h-[80vh] ">
+								<div className="h-[70vh] overflow-y-auto py-6 ">{children}</div>
+								<div className=" h-[10vh] py-6">
+									{renderFooter ? (
+										renderFooter
+									) : (
+										<Button variant="danger" type="button" size="md" onClick={close}>
+											Close
+										</Button>
+									)}
+								</div>
+							</Dialog.Description>
 						</div>
 					</div>
 				</div>

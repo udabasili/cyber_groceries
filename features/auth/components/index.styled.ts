@@ -25,7 +25,8 @@ export const AuthContent = styled.section`
 	overflow-y: auto;
 
 	${responsive.tabPort} {
-		width: 70vw;
+		width: 95vw;
+		padding: 2rem 1.2rem;
 	}
 
 	button {
