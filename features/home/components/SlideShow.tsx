@@ -39,9 +39,10 @@ const SlidePreview = ({ setCurrentSlide, currentSlide }: SlidePreviewProps) => {
 						src={slide.image}
 						alt={slide.name}
 						fill
-						sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+						priority
+						sizes="(min-width:1366px) 916px,
+              (min-width: 1536px) 1030px,
+              100vw"
 					/>
 				</PreviewItem>
 			))}
@@ -116,9 +117,10 @@ export const SlideShow = () => {
 							src={slide.image}
 							alt={slide.name}
 							fill
-							sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+							priority
+							sizes="(min-width:1366px) 916px,
+              (min-width: 1536px) 1030px,
+              100vw"
 						/>
 					</SlideImage>
 				</Slide>

@@ -435,7 +435,7 @@ export const SampleProduct = styled.div`
 			height: 100%;
 			top: 0;
 			left: 0;
-			width: 70%;
+			width: 100%;
 			backface-visibility: hidden;
 			border-radius: 3px;
 			overflow: hidden;
