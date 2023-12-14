@@ -60,15 +60,7 @@ export const Login = ({ setAuthStateFn }: LoginProps) => {
 						<Button type="submit" variant="dark" size="md" isLoading={isLoading} data-cy="submit">
 							Submit
 						</Button>
-						{/* <span
-							role="button"
-							onClick={() => setAuthStateFn('register')}
-							tabIndex={-1}
-							onKeyDown={() => (f: unknown) => f}
-							className="flex flex-1 mt-5 self-center cursor-pointer text-green-700 text-md font-header hover:opacity-70"
-						>
-							<p className="">Don&apos;t have an account? </p>
-						</span> */}
+
 					</>
 				)}
 			</Form>
