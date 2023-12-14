@@ -16,7 +16,7 @@ const ComponentMap: ComponentMapProps = {
 };
 
 export default function Auth() {
-	const [authState, setAuthState] = useState<'login' | 'register'>('register');
+	const [authState, setAuthState] = useState<'login' | 'register'>('login');
 
 	const Component = ComponentMap[authState];
 

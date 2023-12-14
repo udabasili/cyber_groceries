@@ -6,8 +6,8 @@ export const clientAccount = {
 };
 
 export const adminAccount = {
-	name: 'James Smith',
-	email: 'james@yahoo.com',
+	name: 'Admin',
+	email: 'admin@yahoo.com',
 	password: 'a1234567',
 	role: 'User',
 };
