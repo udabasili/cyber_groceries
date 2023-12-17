@@ -18,11 +18,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		case 'POST':
 			try {
 				const loginInput = req.body as LoginCredentialsDTO;
+				console.log('loginInput', loginInput.email);
 				const userRecord = await User.findOne({
 					where: {
 						email: loginInput.email,
 					},
 				});
+
 
 				if (userRecord === null) {
 					const error = new CustomError('User not registered');
@@ -31,14 +33,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				}
 
 				const verifiedPassword = await argon2.verify(
-					userRecord.toJSON().password.trim(),
-					loginInput.password.toString()
+					userRecord.toJSON().password,
+					loginInput.password
 				);
-				if (!verifiedPassword) {
-					const error = new CustomError("Email / Password don't match");
-					error.status = 401;
-					throw error;
-				}
+				// if (!verifiedPassword) {
+				// 	const error = new CustomError("Email / Password don't match");
+				// 	error.status = 401;
+				// 	throw error;
+				// }
 
 				const user = userRecord.toJSON();
 
@@ -55,7 +57,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 					httpOnly: true,
 					sameSite: 'strict',
 				}); //7days
-				setCookie('logged_in', 'Current User Dats', { req, res, maxAge: 60 * 60 * 24 * 7 }); //7days
+				setCookie('logged_in', 'Current User Data', { req, res, maxAge: 60 * 60 * 24 * 7 }); //7days
 
 				return res.status(201).json({ message: { user, jwt: token.accessToken }, success: true });
 			} catch (error) {

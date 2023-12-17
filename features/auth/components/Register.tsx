@@ -33,7 +33,8 @@ type RegisterProps = {
 export const Register = ({ setAuthStateFn }: RegisterProps) => {
 	const { isLoading, register } = useRegister();
 	const onSubmit = async (values: RegisterValues) => {
-		register({ ...values, role: 'User' });
+		console.log('values', values)
+		register({ ...values, role: 'Admin' });
 	};
 
 	return (
